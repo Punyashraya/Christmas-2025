@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas, My Love</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #001f3f, #000033);
+            color: #fff;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: #ff3333;
+            text-shadow: 0 0 15px #fff, 0 0 30px #ff0000;
+            margin: 20px 20px 30px;
+            padding: 0 10px;
+        }
+
+        .poem {
+            max-width: 90%;
+            width: 800px;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.15);
+            padding: clamp(20px, 5vw, 50px);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            margin: 0 20px;
+        }
+
+        .heart {
+            color: #ff0000;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        footer {
+            margin: 30px 20px 40px;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: #ffcccc;
+        }
+
+        .snowflake {
+            position: absolute;
+            color: #ffffff;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            opacity: 0.9;
+            pointer-events: none;
+            top: -10px;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Reduce snowflakes on small screens for better performance */
+        @media (max-width: 600px) {
+            .snowflake {
+                font-size: clamp(0.8rem, 2.5vw, 1.4rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Merry Christmas, My Love ❤️🎄</h1>
+    <div class="poem">
+        <p>To my dearest [Her Name],</p>
+        <p>In this season of twinkling lights and snowy nights,</p>
+        <p>My heart glows warmer just thinking of you.</p>
+        <p>You're the magic in my Christmas, my sweetest delight,</p>
+        <p>The one who makes every dream feel brand new.</p>
+        <p>Like gifts under the tree, wrapped in ribbons so bright,</p>
+        <p>My love for you sparkles, forever true.</p>
+        <p>Merry Christmas, my angel, hold me tight—</p>
+        <p>You're my forever, in red, green, and white. 💕</p>
+        <p>With all my love,</p>
+        <p>[Your Name]</p>
+    </div>
+    <div class="heart">💖❄️🎅❄️💖</div>
+    <footer>Made with endless love • Christmas 2025</footer>
+
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerText = ['❄', '✨', '❅'][Math.floor(Math.random() * 3)];
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 4 + 5) + 's';
+            snowflake.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 12000);
+        }
+
+        // Fewer snowflakes on mobile for performance
+        const interval = window.innerWidth < 600 ? 400 : 200;
+        setInterval(createSnowflake, interval);
+    </script>
+</body>
+</html>
