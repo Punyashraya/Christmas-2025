@@ -17,51 +17,64 @@ body {
     font-family: 'Georgia', serif;
     text-align: center;
     overflow-x: hidden;
+
+    /* 🌲 Dark snowy forest background */
+    background:
+      radial-gradient(circle at 20% 65%, rgba(255,190,120,0.25), transparent 35%),
+      radial-gradient(circle at 75% 70%, rgba(255,190,120,0.22), transparent 35%),
+      radial-gradient(circle at 50% 60%, rgba(255,200,140,0.18), transparent 40%),
+      linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
+      url("https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-/* 🌲 Snowy forest background */
-#background-video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-    filter: brightness(0.35) contrast(1.1);
-}
-
-/* Dark overlay for readability */
-body::before {
+/* 🕯️ Lamp glow flicker overlay */
+body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(0,0,0,0.85));
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 68%, rgba(255,190,120,0.35), transparent 35%),
+      radial-gradient(circle at 78% 72%, rgba(255,190,120,0.3), transparent 35%);
+    animation: lampFlicker 4s infinite ease-in-out;
     z-index: -1;
 }
 
-/* Heading */
+@keyframes lampFlicker {
+    0%   { opacity: 0.75; }
+    25%  { opacity: 0.9; }
+    50%  { opacity: 0.8; }
+    75%  { opacity: 1; }
+    100% { opacity: 0.75; }
+}
+
+/* Title */
 h1 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     color: #ff6b6b;
-    text-shadow: 0 0 25px #ff2d2d;
+    text-shadow: 0 0 30px #ff2d2d;
     margin: 30px 0;
 }
 
-/* Poem */
+/* Poem styling */
 .poem {
-    max-width: 800px;
-    font-size: clamp(1.3rem, 4.5vw, 1.9rem);
+    max-width: 850px;
+    font-size: clamp(1.25rem, 4.2vw, 1.8rem);
     line-height: 2.1;
 }
 
 .poem p {
-    margin: 25px 0;
-    text-shadow: 0 0 12px rgba(0,0,0,0.8);
+    margin: 22px 0;
+    text-shadow: 0 0 14px rgba(0,0,0,0.9);
 }
 
 .cute-emoji {
     font-size: 2rem;
     margin: 35px 0;
+    display: block;
 }
 
 /* Tree */
@@ -82,49 +95,40 @@ footer {
 .snowflake {
     position: fixed;
     top: -20px;
+    font-size: 0.6rem;
     color: #fff;
-    font-size: 0.8rem;
     pointer-events: none;
-    opacity: 0.9;
-    animation-name: snowfall;
-    animation-timing-function: linear;
+    opacity: 0;
+    animation: snowFall linear forwards;
     text-shadow: 0 0 6px rgba(180,220,255,0.8);
 }
 
-/* Falling + fading */
-@keyframes snowfall {
+@keyframes snowFall {
     0% {
         transform: translateY(0) translateX(0);
         opacity: 0;
     }
-    10% {
-        opacity: 0.9;
-    }
-    80% {
-        opacity: 0.7;
-    }
+    15% { opacity: 0.9; }
+    85% { opacity: 0.6; }
     100% {
-        transform: translateY(110vh) translateX(40px);
+        transform: translateY(110vh) translateX(30px);
         opacity: 0;
     }
 }
 
-/* Floating hearts */
+/* ❤️ Floating hearts */
 .heart-float {
     position: fixed;
-    bottom: -30px;
-    font-size: 1.8rem;
-    opacity: 0.6;
-    animation: floatUp 18s linear infinite;
+    bottom: -40px;
+    font-size: 1.6rem;
+    opacity: 0;
+    animation: floatUp 18s linear forwards;
 }
 
 @keyframes floatUp {
-    from {
-        transform: translateY(0);
-        opacity: 0;
-    }
+    0% { opacity: 0; }
     20% { opacity: 0.6; }
-    to {
+    100% {
         transform: translateY(-120vh);
         opacity: 0;
     }
@@ -134,53 +138,62 @@ footer {
 
 <body>
 
-<!-- 🌌 Snowy forest with lamps -->
-<video id="background-video" autoplay muted loop playsinline>
-    <source src="https://player.vimeo.com/external/475629573.hd.mp4?s=9cbb9d1e9f6cfcdbdf8b9f5b70e5db0c3bdb4b21&profile_id=175" type="video/mp4">
-</video>
-
 <h1>Merry Christmas, My Love ❤️🎄</h1>
 
 <div class="poem">
-    <p>To my dearest [Her Name],</p>
+    <p>On a snowie Christmas eve,</p>
+    <p>when the winds grow slow,</p>
+    <p>I think of your smile,</p>
+    <p>warmer than hearth aglow.</p>
 
-    <span class="cute-emoji">🎁✨</span>
+    <span class="cute-emoji">❄️✨</span>
 
-    <p>In this season of twinkling lights and snowy nights,</p>
-    <p>My heart glows warmer just thinking of you.</p>
+    <p>From dusk till dawn,</p>
+    <p>All the stars we traced,</p>
+    <p>Every flake that is falling,</p>
+    <p>reminds me of your pretty face.</p>
 
-    <span class="cute-emoji">❄️🥰</span>
+    <span class="cute-emoji">🎁💫</span>
 
-    <p>You're the magic in my Christmas, my sweetest delight,</p>
-    <p>The one who makes every dream feel brand new.</p>
+    <p>Lit up eyes that brighten my dark nights,</p>
+    <p>Gift beneath the trees, green silver, red and white,</p>
+    <p>You wewe, are my sweetest and truest find.</p>
 
-    <span class="cute-emoji">🦌🎀</span>
+    <span class="cute-emoji">☕🔥</span>
 
-    <p>Merry Christmas, my angel, hold me tight—</p>
-    <p>You're my forever, in red, green, and white. 💕</p>
+    <p>frosty and chilly air,</p>
+    <p>While I dream you’re always there.</p>
+    <p>Warm cocoa, by my fireplace blows,</p>
+    <p>Means Christmas, love, it’s you I know.</p>
 
-    <p>With all my love,<br>[Your Name]</p>
+    <span class="cute-emoji">🌿❤️</span>
+
+    <p>Under mistletoe we stand, Holding time in gentle hand.</p>
+    <p>World may rush, but here we stay, Wishing you a happy holiday.</p>
+    <p>Wrapped in wool and fairy light, All I wish is holding you tight.</p>
+
+    <span class="cute-emoji">🎄💞</span>
+
+    <p>So here’s to us darling, let’s unwrap the year,</p>
+    <p>Hold my hand through December, and overcome all fears.</p>
 </div>
 
 <div class="tree">🎄</div>
 
-<footer>Made with endless love • Merry Christmas 2025 💕</footer>
+<footer>Made with endless love, Merry Christmas 2025 💕</footer>
 
 <script>
-/* ❄️ Pretty snowfall */
 function createSnowflake() {
     const flake = document.createElement("div");
     flake.className = "snowflake";
     flake.innerHTML = ["❄","❅","❆"][Math.floor(Math.random()*3)];
     flake.style.left = Math.random() * 100 + "vw";
-    flake.style.fontSize = Math.random() * 0.8 + 0.5 + "rem";
+    flake.style.fontSize = Math.random() * 0.5 + 0.4 + "rem";
     flake.style.animationDuration = Math.random() * 6 + 10 + "s";
     document.body.appendChild(flake);
-
-    setTimeout(() => flake.remove(), 16000);
+    setTimeout(() => flake.remove(), 17000);
 }
 
-/* ❤️ Floating hearts */
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart-float";
@@ -190,9 +203,8 @@ function createHeart() {
     setTimeout(() => heart.remove(), 18000);
 }
 
-/* Density control */
-setInterval(createSnowflake, window.innerWidth < 600 ? 300 : 150);
-setInterval(createHeart, 4000);
+setInterval(createSnowflake, window.innerWidth < 600 ? 280 : 140);
+setInterval(createHeart, 4500);
 </script>
 
 </body>
