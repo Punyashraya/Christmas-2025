@@ -32,14 +32,14 @@ body {
     animation: cameraPan 80s linear infinite;
 }
 
-/* 🎥 Camera pan illusion */
+/* 🎥 Camera pan */
 @keyframes cameraPan {
-    0%   { background-position: 50% 50%; }
-    50%  { background-position: 55% 48%; }
+    0% { background-position: 50% 50%; }
+    50% { background-position: 55% 48%; }
     100% { background-position: 50% 50%; }
 }
 
-/* 🕯️ Lamp glows */
+/* 🕯️ Lamps */
 .lamp {
     position: fixed;
     bottom: 8%;
@@ -47,9 +47,8 @@ body {
     height: 120px;
     background: #111;
     border-radius: 6px;
-    z-index: 1;
+    z-index: 2;
 }
-
 .lamp::after {
     content: "";
     position: absolute;
@@ -61,16 +60,14 @@ body {
     background: radial-gradient(circle, var(--lamp-glow), transparent 60%);
     animation: lampFlicker 4s infinite ease-in-out;
 }
-
 .lamp.left { left: 12%; }
 .lamp.right { right: 12%; }
 
 @keyframes lampFlicker {
-    0%   { opacity: 0.7; }
-    20%  { opacity: 0.9; }
-    40%  { opacity: 0.8; }
-    60%  { opacity: 1; }
-    80%  { opacity: 0.85; }
+    0% { opacity: 0.7; }
+    25% { opacity: 0.9; }
+    50% { opacity: 0.8; }
+    75% { opacity: 1; }
     100% { opacity: 0.7; }
 }
 
@@ -90,12 +87,10 @@ h1 {
     line-height: 2.1;
     z-index: 5;
 }
-
 .poem p {
     margin: 22px 0;
     text-shadow: 0 0 16px rgba(0,0,0,0.95);
 }
-
 .cute-emoji {
     font-size: 2rem;
     margin: 35px 0;
@@ -117,23 +112,40 @@ footer {
     z-index: 5;
 }
 
-/* ❄️ Snow */
-.snowflake {
+/* ❄️ SNOW LAYERS */
+.snow {
     position: fixed;
     top: -20px;
-    font-size: 0.55rem;
     pointer-events: none;
-    opacity: 0;
     animation: snowFall linear forwards;
-    text-shadow: 0 0 6px rgba(180,220,255,0.8);
-    z-index: 4;
+}
+
+.snow.back {
+    font-size: 0.35rem;
+    opacity: 0.35;
+    filter: blur(1px);
+    z-index: 1;
+}
+
+.snow.mid {
+    font-size: 0.55rem;
+    opacity: 0.6;
+    z-index: 3;
+}
+
+.snow.front {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    z-index: 6;
 }
 
 @keyframes snowFall {
-    0% { transform: translateY(0); opacity: 0; }
-    15% { opacity: 0.9; }
-    85% { opacity: 0.6; }
-    100% { transform: translateY(110vh) translateX(30px); opacity: 0; }
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    15% { opacity: inherit; }
+    100% {
+        transform: translateY(115vh) translateX(40px);
+        opacity: 0;
+    }
 }
 
 /* ❤️ Hearts */
@@ -143,16 +155,15 @@ footer {
     font-size: 1.6rem;
     opacity: 0;
     animation: floatUp 18s linear forwards;
-    z-index: 4;
+    z-index: 6;
 }
-
 @keyframes floatUp {
     0% { opacity: 0; }
     20% { opacity: 0.6; }
     100% { transform: translateY(-120vh); opacity: 0; }
 }
 
-/* 🎶 Music toggle */
+/* 🎶 Music */
 #music-toggle {
     position: fixed;
     bottom: 20px;
@@ -162,12 +173,11 @@ footer {
     border: none;
     padding: 10px 14px;
     border-radius: 50px;
-    font-size: 1rem;
     cursor: pointer;
     z-index: 10;
 }
 
-/* 📱 Mobile optimization */
+/* 📱 Mobile */
 @media (max-width: 600px) {
     .lamp { display: none; }
 }
@@ -176,7 +186,6 @@ footer {
 
 <body>
 
-<!-- Lamps -->
 <div class="lamp left"></div>
 <div class="lamp right"></div>
 
@@ -224,11 +233,9 @@ footer {
 
 <footer>Made with endless love • Merry Christmas 2025 💕</footer>
 
-<!-- 🎶 Music -->
 <audio id="music" loop>
     <source src="https://cdn.pixabay.com/audio/2022/12/21/audio_1c1e9c6f4c.mp3" type="audio/mpeg">
 </audio>
-
 <button id="music-toggle">🎶 Play</button>
 
 <script>
@@ -245,15 +252,18 @@ toggle.onclick = () => {
     }
 };
 
-function createSnowflake() {
+function createSnow(layer) {
     const flake = document.createElement("div");
-    flake.className = "snowflake";
+    flake.className = `snow ${layer}`;
     flake.innerHTML = ["❄","❅","❆"][Math.floor(Math.random()*3)];
     flake.style.left = Math.random() * 100 + "vw";
-    flake.style.fontSize = Math.random() * 0.5 + 0.4 + "rem";
-    flake.style.animationDuration = Math.random() * 6 + 10 + "s";
+
+    let duration = layer === "back" ? 22 :
+                   layer === "mid" ? 16 : 10;
+    flake.style.animationDuration = duration + "s";
+
     document.body.appendChild(flake);
-    setTimeout(() => flake.remove(), 17000);
+    setTimeout(() => flake.remove(), duration * 1000);
 }
 
 function createHeart() {
@@ -265,7 +275,9 @@ function createHeart() {
     setTimeout(() => heart.remove(), 18000);
 }
 
-setInterval(createSnowflake, window.innerWidth < 600 ? 320 : 160);
+setInterval(() => createSnow("back"), 400);
+setInterval(() => createSnow("mid"), 220);
+setInterval(() => createSnow("front"), 320);
 setInterval(createHeart, 4500);
 </script>
 
