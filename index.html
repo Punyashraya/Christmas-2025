@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas, My Love</title>
+    <title>Merry Christmas, My Love ❤️</title>
     <style>
         body {
-            background: linear-gradient(to bottom, #001f3f, #000033);
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
             color: #fff;
             font-family: 'Georgia', serif;
             text-align: center;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -23,103 +23,184 @@
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: #ff3333;
-            text-shadow: 0 0 15px #fff, 0 0 30px #ff0000;
-            margin: 20px 20px 30px;
-            padding: 0 10px;
+            color: #ff6b6b;
+            text-shadow: 0 0 20px #ff0000, 0 0 40px #ff00ff;
+            margin: 20px;
+            animation: glow 3s infinite alternate;
         }
 
         .poem {
             max-width: 90%;
             width: 800px;
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            line-height: 1.8;
-            background: rgba(255, 255, 255, 0.15);
-            padding: clamp(20px, 5vw, 50px);
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(5px);
-            margin: 0 20px;
+            font-size: clamp(1.3rem, 4.5vw, 1.9rem);
+            line-height: 2.1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: clamp(30px, 6vw, 60px);
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
         }
 
-        .heart {
-            color: #ff0000;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin: 30px;
-            animation: pulse 2s infinite;
+        .poem p {
+            margin: 20px 0;
+        }
+
+        .cute-emoji {
+            font-size: 1.8em;
+            display: block;
+            margin: 20px auto;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .heart-float {
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 2em;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: floatUp 12s linear infinite;
+        }
+
+        .star {
+            position: absolute;
+            color: #ffff66;
+            font-size: 1.2em;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: twinkle 3s infinite;
+        }
+
+        .tree {
+            font-size: clamp(4rem, 12vw, 8rem);
+            margin: 40px 0 20px;
+            animation: treeGlow 4s infinite alternate;
         }
 
         footer {
-            margin: 30px 20px 40px;
+            margin: 20px;
             font-size: clamp(1rem, 3vw, 1.4rem);
-            color: #ffcccc;
+            color: #ffb3b3;
+            z-index: 10;
         }
 
         .snowflake {
             position: absolute;
             color: #ffffff;
-            font-size: clamp(1rem, 3vw, 1.8rem);
+            font-size: clamp(1rem, 3vw, 2rem);
             opacity: 0.9;
             pointer-events: none;
-            top: -10px;
+            top: -20px;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #ff0000; }
+            to { text-shadow: 0 0 40px #ff00ff, 0 0 60px #ff0000; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            to { transform: translateY(-100px) rotate(360deg); opacity: 0.7; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes treeGlow {
+            from { filter: drop-shadow(0 0 20px #00ff00); }
+            to { filter: drop-shadow(0 0 40px #ffff00); }
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
-        }
-
-        /* Reduce snowflakes on small screens for better performance */
-        @media (max-width: 600px) {
-            .snowflake {
-                font-size: clamp(0.8rem, 2.5vw, 1.4rem);
-            }
+            to { transform: translateY(110vh) rotate(720deg); }
         }
     </style>
 </head>
 <body>
+
     <h1>Merry Christmas, My Love ❤️🎄</h1>
+
     <div class="poem">
         <p>To my dearest [Her Name],</p>
+
+        <span class="cute-emoji">🎁✨</span>
+
         <p>In this season of twinkling lights and snowy nights,</p>
         <p>My heart glows warmer just thinking of you.</p>
+
+        <span class="cute-emoji">❄️🥰</span>
+
         <p>You're the magic in my Christmas, my sweetest delight,</p>
         <p>The one who makes every dream feel brand new.</p>
+
+        <span class="cute-emoji">🦌🎀</span>
+
         <p>Like gifts under the tree, wrapped in ribbons so bright,</p>
         <p>My love for you sparkles, forever true.</p>
+
+        <span class="cute-emoji">🔔❤️</span>
+
         <p>Merry Christmas, my angel, hold me tight—</p>
         <p>You're my forever, in red, green, and white. 💕</p>
+
+        <span class="cute-emoji">🌟🎄</span>
+
         <p>With all my love,</p>
         <p>[Your Name]</p>
     </div>
-    <div class="heart">💖❄️🎅❄️💖</div>
-    <footer>Made with endless love • Christmas 2025</footer>
+
+    <div class="tree">🎄</div>
+
+    <footer>Made with endless love this Christmas • 2025 💕</footer>
 
     <script>
+        // Falling snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
-            snowflake.innerText = ['❄', '✨', '❅'][Math.floor(Math.random() * 3)];
+            snowflake.innerText = ['❄️', '❅', '❆', '✨'][Math.floor(Math.random() * 4)];
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = (Math.random() * 4 + 5) + 's';
-            snowflake.style.animationDelay = Math.random() * 2 + 's';
+            snowflake.style.animationDuration = Math.random() * 5 + 6 + 's';
+            snowflake.style.opacity = Math.random() * 0.5 + 0.5;
             document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 12000);
+            setTimeout(() => snowflake.remove(), 15000);
         }
 
-        // Fewer snowflakes on mobile for performance
-        const interval = window.innerWidth < 600 ? 400 : 200;
-        setInterval(createSnowflake, interval);
+        // Floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-float');
+            heart.innerText = ['❤️', '💕', '💖', '🩷'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 8 + 10 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 20000);
+        }
+
+        // Twinkling stars
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.innerText = '✨';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 60 + 'vh';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(star);
+        }
+
+        // Start animations
+        setInterval(createSnowflake, window.innerWidth < 600 ? 400 : 250);
+        setInterval(createHeart, 3000);
+        for (let i = 0; i < 30; i++) createStar();
     </script>
 </body>
 </html>
