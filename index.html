@@ -6,6 +6,10 @@
 <title>Merry Christmas, My Love ❤️🎄</title>
 
 <style>
+:root {
+    --lamp-glow: rgba(255,190,120,0.45);
+}
+
 body {
     margin: 0;
     padding: 40px 20px;
@@ -18,57 +22,78 @@ body {
     text-align: center;
     overflow-x: hidden;
 
-    /* 🌲 Dark snowy forest background */
     background:
-      radial-gradient(circle at 20% 65%, rgba(255,190,120,0.25), transparent 35%),
-      radial-gradient(circle at 75% 70%, rgba(255,190,120,0.22), transparent 35%),
-      radial-gradient(circle at 50% 60%, rgba(255,200,140,0.18), transparent 40%),
-      linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
+      linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85)),
       url("https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1920&q=80");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
+    animation: cameraPan 80s linear infinite;
 }
 
-/* 🕯️ Lamp glow flicker overlay */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 18% 68%, rgba(255,190,120,0.35), transparent 35%),
-      radial-gradient(circle at 78% 72%, rgba(255,190,120,0.3), transparent 35%);
-    animation: lampFlicker 4s infinite ease-in-out;
-    z-index: -1;
+/* 🎥 Camera pan illusion */
+@keyframes cameraPan {
+    0%   { background-position: 50% 50%; }
+    50%  { background-position: 55% 48%; }
+    100% { background-position: 50% 50%; }
 }
+
+/* 🕯️ Lamp glows */
+.lamp {
+    position: fixed;
+    bottom: 8%;
+    width: 18px;
+    height: 120px;
+    background: #111;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+.lamp::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, var(--lamp-glow), transparent 60%);
+    animation: lampFlicker 4s infinite ease-in-out;
+}
+
+.lamp.left { left: 12%; }
+.lamp.right { right: 12%; }
 
 @keyframes lampFlicker {
-    0%   { opacity: 0.75; }
-    25%  { opacity: 0.9; }
-    50%  { opacity: 0.8; }
-    75%  { opacity: 1; }
-    100% { opacity: 0.75; }
+    0%   { opacity: 0.7; }
+    20%  { opacity: 0.9; }
+    40%  { opacity: 0.8; }
+    60%  { opacity: 1; }
+    80%  { opacity: 0.85; }
+    100% { opacity: 0.7; }
 }
 
 /* Title */
 h1 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     color: #ff6b6b;
-    text-shadow: 0 0 30px #ff2d2d;
+    text-shadow: 0 0 35px #ff2d2d;
     margin: 30px 0;
+    z-index: 5;
 }
 
-/* Poem styling */
+/* Poem */
 .poem {
     max-width: 850px;
     font-size: clamp(1.25rem, 4.2vw, 1.8rem);
     line-height: 2.1;
+    z-index: 5;
 }
 
 .poem p {
     margin: 22px 0;
-    text-shadow: 0 0 14px rgba(0,0,0,0.9);
+    text-shadow: 0 0 16px rgba(0,0,0,0.95);
 }
 
 .cute-emoji {
@@ -81,62 +106,79 @@ h1 {
 .tree {
     font-size: clamp(6rem, 18vw, 12rem);
     margin: 50px 0;
-    text-shadow: 0 0 40px #00ff88;
+    text-shadow: 0 0 45px #00ff88;
+    z-index: 5;
 }
 
 /* Footer */
 footer {
     margin: 40px 0;
     color: #ffb3b3;
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    z-index: 5;
 }
 
-/* ❄️ Snowflakes */
+/* ❄️ Snow */
 .snowflake {
     position: fixed;
     top: -20px;
-    font-size: 0.6rem;
-    color: #fff;
+    font-size: 0.55rem;
     pointer-events: none;
     opacity: 0;
     animation: snowFall linear forwards;
     text-shadow: 0 0 6px rgba(180,220,255,0.8);
+    z-index: 4;
 }
 
 @keyframes snowFall {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
+    0% { transform: translateY(0); opacity: 0; }
     15% { opacity: 0.9; }
     85% { opacity: 0.6; }
-    100% {
-        transform: translateY(110vh) translateX(30px);
-        opacity: 0;
-    }
+    100% { transform: translateY(110vh) translateX(30px); opacity: 0; }
 }
 
-/* ❤️ Floating hearts */
+/* ❤️ Hearts */
 .heart-float {
     position: fixed;
     bottom: -40px;
     font-size: 1.6rem;
     opacity: 0;
     animation: floatUp 18s linear forwards;
+    z-index: 4;
 }
 
 @keyframes floatUp {
     0% { opacity: 0; }
     20% { opacity: 0.6; }
-    100% {
-        transform: translateY(-120vh);
-        opacity: 0;
-    }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* 🎶 Music toggle */
+#music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* 📱 Mobile optimization */
+@media (max-width: 600px) {
+    .lamp { display: none; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- Lamps -->
+<div class="lamp left"></div>
+<div class="lamp right"></div>
 
 <h1>Merry Christmas, My Love ❤️🎄</h1>
 
@@ -180,9 +222,29 @@ footer {
 
 <div class="tree">🎄</div>
 
-<footer>Made with endless love, Merry Christmas 2025 💕</footer>
+<footer>Made with endless love • Merry Christmas 2025 💕</footer>
+
+<!-- 🎶 Music -->
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/12/21/audio_1c1e9c6f4c.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-toggle">🎶 Play</button>
 
 <script>
+const music = document.getElementById("music");
+const toggle = document.getElementById("music-toggle");
+
+toggle.onclick = () => {
+    if (music.paused) {
+        music.play();
+        toggle.textContent = "⏸ Pause";
+    } else {
+        music.pause();
+        toggle.textContent = "🎶 Play";
+    }
+};
+
 function createSnowflake() {
     const flake = document.createElement("div");
     flake.className = "snowflake";
@@ -203,7 +265,7 @@ function createHeart() {
     setTimeout(() => heart.remove(), 18000);
 }
 
-setInterval(createSnowflake, window.innerWidth < 600 ? 280 : 140);
+setInterval(createSnowflake, window.innerWidth < 600 ? 320 : 160);
 setInterval(createHeart, 4500);
 </script>
 
