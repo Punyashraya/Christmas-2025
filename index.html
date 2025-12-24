@@ -6,7 +6,7 @@
     <title>Merry Christmas, My Love ❤️🎄</title>
     <style>
         body {
-            background: #000 url('https://static.vecteezy.com/system/resources/previews/069/423/967/large_2x/enchanted-winter-landscape-of-snowy-forest-path-illuminated-by-warm-fairy-lights-and-decorative-lanterns-creating-a-magical-atmosphere-perfect-for-christmas-themes-and-holiday-photo.jpg') center/cover no-repeat fixed;
+            background: #000 url('https://thumbs.dreamstime.com/b/enchanted-winter-forest-path-glowing-lights-night-327342855.jpg') center/cover no-repeat fixed;
             color: #fff;
             font-family: 'Georgia', serif;
             text-align: center;
@@ -23,7 +23,7 @@
         h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             color: #ff6b6b;
-            text-shadow: 0 0 20px #ff0000, 0 0 40px #ff00ff;
+            text-shadow: 0 0 20px #ff0000, 0 0 40px #ff00ff, 0 0 10px #fff;
             margin: 20px 0;
             animation: glow 4s infinite alternate;
             z-index: 10;
@@ -34,18 +34,14 @@
             width: 800px;
             font-size: clamp(1.3rem, 4.5vw, 1.9rem);
             line-height: 2.1;
-            background: rgba(0, 0, 0, 0.25); /* Lighter overlay so background shines through */
-            padding: clamp(40px, 7vw, 70px);
-            border-radius: 30px;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: clamp(20px, 4vw, 40px);
             margin: 30px 0;
             z-index: 10;
         }
 
         .poem p {
             margin: 25px 0;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6); /* Glow shadow for readability */
         }
 
         .cute-emoji {
@@ -53,6 +49,7 @@
             display: block;
             margin: 40px auto;
             animation: float 5s infinite ease-in-out;
+            text-shadow: 0 0 15px #fff;
         }
 
         .heart-float {
@@ -69,6 +66,7 @@
             font-size: clamp(6rem, 18vw, 12rem);
             margin: 60px 0 40px;
             animation: treeGlow 6s infinite alternate;
+            text-shadow: 0 0 30px #00ff00;
             z-index: 10;
         }
 
@@ -76,6 +74,7 @@
             margin: 50px 0 30px;
             font-size: clamp(1rem, 3vw, 1.4rem);
             color: #ffb3b3;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
             z-index: 10;
         }
 
@@ -91,8 +90,8 @@
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 20px #ff3333; }
-            to { text-shadow: 0 0 60px #ff00ff, 0 0 80px #ff3333; }
+            from { text-shadow: 0 0 20px #ff3333, 0 0 10px #fff; }
+            to { text-shadow: 0 0 60px #ff00ff, 0 0 80px #ff3333, 0 0 15px #fff; }
         }
 
         @keyframes float {
@@ -106,8 +105,8 @@
         }
 
         @keyframes treeGlow {
-            from { filter: drop-shadow(0 0 30px #00ff00); }
-            to { filter: drop-shadow(0 0 60px #ffff00); }
+            from { text-shadow: 0 0 30px #00ff00; }
+            to { text-shadow: 0 0 60px #ffff00; }
         }
 
         @keyframes fall {
@@ -181,7 +180,7 @@
             setTimeout(() => heart.remove(), 30000);
         }
 
-        setInterval(createSnowflake, window.innerWidth < 600 ? 400 : 200); // Heavy snow!
+        setInterval(createSnowflake, window.innerWidth < 600 ? 400 : 200);
         setInterval(createHeart, 3500);
     </script>
 </body>
