@@ -6,27 +6,27 @@
     <title>Merry Christmas, My Love ❤️</title>
     <style>
         body {
-            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            background: #000 url('https://images.stockcake.com/public/4/9/a/49a11b18-ad35-413f-b971-f8589376f385_large/enchanted-forest-lights-stockcake.jpg') center/cover no-repeat fixed;
             color: #fff;
             font-family: 'Georgia', serif;
             text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            overflow: hidden;
             position: relative;
+            overflow-x: hidden; /* Allows vertical scrolling */
         }
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             color: #ff6b6b;
             text-shadow: 0 0 20px #ff0000, 0 0 40px #ff00ff;
-            margin: 20px;
+            margin: 20px 0;
             animation: glow 3s infinite alternate;
+            z-index: 10;
         }
 
         .poem {
@@ -34,13 +34,13 @@
             width: 800px;
             font-size: clamp(1.3rem, 4.5vw, 1.9rem);
             line-height: 2.1;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.4);
             padding: clamp(30px, 6vw, 60px);
             border-radius: 25px;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
             z-index: 10;
         }
 
@@ -49,9 +49,9 @@
         }
 
         .cute-emoji {
-            font-size: 1.8em;
+            font-size: 2em;
             display: block;
-            margin: 20px auto;
+            margin: 30px auto;
             animation: float 4s infinite ease-in-out;
         }
 
@@ -59,28 +59,31 @@
             position: absolute;
             color: #ff6b6b;
             font-size: 2em;
-            opacity: 0.7;
+            opacity: 0.6;
             pointer-events: none;
-            animation: floatUp 12s linear infinite;
+            animation: floatUp 15s linear infinite;
+            z-index: 5;
         }
 
         .star {
             position: absolute;
-            color: #ffff66;
+            color: #ffff99;
             font-size: 1.2em;
             opacity: 0.8;
             pointer-events: none;
-            animation: twinkle 3s infinite;
+            animation: twinkle 4s infinite;
+            z-index: 5;
         }
 
         .tree {
-            font-size: clamp(4rem, 12vw, 8rem);
-            margin: 40px 0 20px;
-            animation: treeGlow 4s infinite alternate;
+            font-size: clamp(5rem, 15vw, 10rem);
+            margin: 50px 0 30px;
+            animation: treeGlow 5s infinite alternate;
+            z-index: 10;
         }
 
         footer {
-            margin: 20px;
+            margin: 40px 0 20px;
             font-size: clamp(1rem, 3vw, 1.4rem);
             color: #ffb3b3;
             z-index: 10;
@@ -89,25 +92,27 @@
         .snowflake {
             position: absolute;
             color: #ffffff;
-            font-size: clamp(1rem, 3vw, 2rem);
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
             opacity: 0.9;
             pointer-events: none;
-            top: -20px;
+            top: -30px;
+            z-index: 20;
+            animation: fall linear infinite;
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 20px #ff0000; }
-            to { text-shadow: 0 0 40px #ff00ff, 0 0 60px #ff0000; }
+            from { text-shadow: 0 0 20px #ff3333; }
+            to { text-shadow: 0 0 50px #ff00ff, 0 0 70px #ff3333; }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         @keyframes floatUp {
-            from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            to { transform: translateY(-100px) rotate(360deg); opacity: 0.7; }
+            from { transform: translateY(100vh) translateX(0); opacity: 0; }
+            to { transform: translateY(-100px) translateX(100px); opacity: 0.6; }
         }
 
         @keyframes twinkle {
@@ -117,11 +122,11 @@
 
         @keyframes treeGlow {
             from { filter: drop-shadow(0 0 20px #00ff00); }
-            to { filter: drop-shadow(0 0 40px #ffff00); }
+            to { filter: drop-shadow(0 0 50px #ffff00); }
         }
 
         @keyframes fall {
-            to { transform: translateY(110vh) rotate(720deg); }
+            to { transform: translateY(110vh) translateX(50px) rotate(360deg); }
         }
     </style>
 </head>
@@ -160,19 +165,20 @@
 
     <div class="tree">🎄</div>
 
-    <footer>Made with endless love this Christmas • 2025 💕</footer>
+    <footer>Made with endless love this Christmas Eve • 2025 💕</footer>
 
     <script>
-        // Falling snowflakes
+        // Enhanced snowflakes with sway
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.innerText = ['❄️', '❅', '❆', '✨'][Math.floor(Math.random() * 4)];
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 5 + 6 + 's';
+            snowflake.style.animationDuration = Math.random() * 8 + 8 + 's';
             snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
             document.body.appendChild(snowflake);
-            setTimeout(() => snowflake.remove(), 15000);
+            setTimeout(() => snowflake.remove(), 20000);
         }
 
         // Floating hearts
@@ -181,9 +187,9 @@
             heart.classList.add('heart-float');
             heart.innerText = ['❤️', '💕', '💖', '🩷'][Math.floor(Math.random() * 4)];
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 8 + 10 + 's';
+            heart.style.animationDuration = Math.random() * 10 + 12 + 's';
             document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 20000);
+            setTimeout(() => heart.remove(), 25000);
         }
 
         // Twinkling stars
@@ -192,15 +198,14 @@
             star.classList.add('star');
             star.innerText = '✨';
             star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 60 + 'vh';
-            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.top = Math.random() * 50 + 'vh';
             document.body.appendChild(star);
         }
 
-        // Start animations
-        setInterval(createSnowflake, window.innerWidth < 600 ? 400 : 250);
-        setInterval(createHeart, 3000);
-        for (let i = 0; i < 30; i++) createStar();
+        // Start everything
+        setInterval(createSnowflake, window.innerWidth < 600 ? 500 : 300); // Fewer on mobile
+        setInterval(createHeart, 4000);
+        for (let i = 0; i < 40; i++) createStar();
     </script>
 </body>
 </html>
