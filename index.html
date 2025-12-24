@@ -6,10 +6,6 @@
     <title>Merry Christmas, My Love ❤️🎄</title>
     <style>
         body {
-            background: #000 url('https://thumbs.dreamstime.com/b/enchanted-winter-forest-glowing-trees-magical-creatures-illuminated-soft-blue-light-silver-color-palette-mystical-408134691.jpg') center/cover no-repeat fixed;
-            color: #fff;
-            font-family: 'Georgia', serif;
-            text-align: center;
             margin: 0;
             padding: 40px 20px;
             min-height: 100vh;
@@ -18,6 +14,21 @@
             align-items: center;
             position: relative;
             overflow-x: hidden;
+            color: #fff;
+            font-family: 'Georgia', serif;
+            text-align: center;
+        }
+
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
         }
 
         h1 {
@@ -49,7 +60,7 @@
             display: block;
             margin: 40px auto;
             animation: float 5s infinite ease-in-out;
-            text-shadow: 0 0 15px #fff;
+            text-shadow: 0 0 20px #fff;
         }
 
         .heart-float {
@@ -86,6 +97,7 @@
             pointer-events: none;
             top: -40px;
             z-index: 20;
+            text-shadow: 0 0 10px #a0d8ff, 0 0 20px #ffffff; /* Glowy effect */
             animation: fall linear infinite, sway 5s ease-in-out infinite;
         }
 
@@ -122,6 +134,11 @@
 </head>
 <body>
 
+    <video id="background-video" autoplay muted loop playsinline>
+        <source src="https://player.vimeo.com/external/390304691.hd.mp4?s=0b0c0b0b0b0b0b0b0b0b0b0b0b0b0b0b&profile_id=175" type="video/mp4">
+        Your browser does not support the video tag. (Fallback to image if needed)
+    </video>
+
     <h1>Merry Christmas, My Love ❤️🎄</h1>
 
     <div class="poem">
@@ -155,16 +172,17 @@
 
     <div class="tree">🎄</div>
 
-    <footer>Made with endless love • Christmas Eve 2025 💕</footer>
+    <footer>Made with endless love • Merry Christmas 2025 💕</footer>
 
     <script>
+        // Super glowy dynamic snowfall
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.innerText = ['❄️', '❅', '❆', '✨', '❄️'][Math.floor(Math.random() * 5)];
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 10 + 12 + 's';
-            snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+            snowflake.style.animationDuration = Math.random() * 8 + 10 + 's';
+            snowflake.style.opacity = Math.random() * 0.6 + 0.4;
             snowflake.style.animationDelay = Math.random() * 5 + 's';
             document.body.appendChild(snowflake);
             setTimeout(() => snowflake.remove(), 30000);
@@ -180,7 +198,8 @@
             setTimeout(() => heart.remove(), 30000);
         }
 
-        setInterval(createSnowflake, window.innerWidth < 600 ? 400 : 200);
+        // Heavy, glowy snow + hearts
+        setInterval(createSnowflake, window.innerWidth < 600 ? 300 : 150);
         setInterval(createHeart, 3500);
     </script>
 </body>
