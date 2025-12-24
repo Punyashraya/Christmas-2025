@@ -6,7 +6,7 @@
     <title>Merry Christmas, My Love ❤️</title>
     <style>
         body {
-            background: #000 url('https://images.stockcake.com/public/4/9/a/49a11b18-ad35-413f-b971-f8589376f385_large/enchanted-forest-lights-stockcake.jpg') center/cover no-repeat fixed;
+            background: #000 url('https://static.vecteezy.com/system/resources/previews/069/423/967/original/enchanted-winter-landscape-of-snowy-forest-path-illuminated-by-warm-fairy-lights-and-decorative-lanterns-creating-a-magical-atmosphere-perfect-for-christmas-themes-and-holiday-photo.jpg') center/cover no-repeat fixed;
             color: #fff;
             font-family: 'Georgia', serif;
             text-align: center;
@@ -17,7 +17,7 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            overflow-x: hidden; /* Allows vertical scrolling */
+            overflow-x: hidden;
         }
 
         h1 {
@@ -34,12 +34,12 @@
             width: 800px;
             font-size: clamp(1.3rem, 4.5vw, 1.9rem);
             line-height: 2.1;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             padding: clamp(30px, 6vw, 60px);
             border-radius: 25px;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             margin: 20px 0;
             z-index: 10;
         }
@@ -97,7 +97,7 @@
             pointer-events: none;
             top: -30px;
             z-index: 20;
-            animation: fall linear infinite;
+            animation: fall linear infinite, sway 4s ease-in-out infinite;
         }
 
         @keyframes glow {
@@ -126,7 +126,12 @@
         }
 
         @keyframes fall {
-            to { transform: translateY(110vh) translateX(50px) rotate(360deg); }
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(50px); }
         }
     </style>
 </head>
@@ -168,20 +173,18 @@
     <footer>Made with endless love this Christmas Eve • 2025 💕</footer>
 
     <script>
-        // Enhanced snowflakes with sway
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.innerText = ['❄️', '❅', '❆', '✨'][Math.floor(Math.random() * 4)];
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 8 + 8 + 's';
-            snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+            snowflake.style.animationDuration = Math.random() * 8 + 10 + 's';
+            snowflake.style.opacity = Math.random() * 0.4 + 0.6;
             snowflake.style.animationDelay = Math.random() * 5 + 's';
             document.body.appendChild(snowflake);
-            setTimeout(() => snowflake.remove(), 20000);
+            setTimeout(() => snowflake.remove(), 25000);
         }
 
-        // Floating hearts
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-float');
@@ -192,7 +195,6 @@
             setTimeout(() => heart.remove(), 25000);
         }
 
-        // Twinkling stars
         function createStar() {
             const star = document.createElement('div');
             star.classList.add('star');
@@ -202,10 +204,9 @@
             document.body.appendChild(star);
         }
 
-        // Start everything
-        setInterval(createSnowflake, window.innerWidth < 600 ? 500 : 300); // Fewer on mobile
+        setInterval(createSnowflake, window.innerWidth < 600 ? 500 : 300);
         setInterval(createHeart, 4000);
-        for (let i = 0; i < 40; i++) createStar();
+        for (let i = 0; i < 50; i++) createStar();
     </script>
 </body>
 </html>
